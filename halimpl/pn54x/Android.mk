@@ -56,6 +56,12 @@ else
 D_CFLAGS += -DNFC_NXP_CHIP_TYPE=PN551
 endif
 
+ifneq ($(BOARD_NFC_HAL_SUFFIX),)
+    HAL_SUFFIX := pn54x.$(BOARD_NFC_HAL_SUFFIX)
+else
+    HAL_SUFFIX := pn54x.default
+endif
+
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 LOCAL_MODULE := nfc_nci.$(HAL_SUFFIX)
