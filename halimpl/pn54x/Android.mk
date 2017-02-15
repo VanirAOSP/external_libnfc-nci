@@ -12,12 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifneq ($(BOARD_NFC_HAL_SUFFIX),)
-    HAL_SUFFIX := pn54x.$(BOARD_NFC_HAL_SUFFIX)
-else
-    HAL_SUFFIX := pn54x.default
-endif
-
 #variables for NFC_NXP_CHIP_TYPE
 PN547C2 := 1
 PN548C2 := 2
@@ -54,6 +48,12 @@ else ifeq ($(NXP_CHIP_TYPE),$(PN551))
 D_CFLAGS += -DNFC_NXP_CHIP_TYPE=PN551
 else
 D_CFLAGS += -DNFC_NXP_CHIP_TYPE=PN551
+endif
+
+ifneq ($(BOARD_NFC_HAL_SUFFIX),)
+    HAL_SUFFIX := pn54x.$(BOARD_NFC_HAL_SUFFIX)
+else
+    HAL_SUFFIX := pn54x.default
 endif
 
 LOCAL_PATH := $(call my-dir)
